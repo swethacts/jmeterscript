@@ -1,0 +1,753 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.1.1 r1855137">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="host" elementType="Argument">
+            <stringProp name="Argument.name">host</stringProp>
+            <stringProp name="Argument.value">wsf.cdyne.com</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">Host of Webservice</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+        <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments"/>
+        </elementProp>
+        <stringProp name="HTTPSampler.domain">${host}</stringProp>
+        <stringProp name="HTTPSampler.port"></stringProp>
+        <stringProp name="HTTPSampler.protocol"></stringProp>
+        <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+        <stringProp name="HTTPSampler.path"></stringProp>
+        <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
+        <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+        <stringProp name="HTTPSampler.response_timeout"></stringProp>
+      </ConfigTestElement>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Number of Users" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">20</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">20</stringProp>
+        <longProp name="ThreadGroup.start_time">1375525852000</longProp>
+        <longProp name="ThreadGroup.end_time">1375525852000</longProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">300</stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="ActuatorHealthAPI" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">05593928-f80d-4685-85aa-45b79ea15f5c.mock.pstmn.io</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/actuator/health</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">1000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CustomerValueAPI" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">410f12e0-0b04-41ef-a07a-a7b2ecffc8ad.mock.pstmn.io</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/pp/v1.0.1/customer/value/49622160</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">1000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="AddCustomerAPI" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;customer&quot;:{&quot;title&quot;:null,&quot;firstName&quot;:&quot;testfname&quot;,&quot;lastName&quot;:&quot;testlname&quot;,&quot;emailAddress1&quot;:&quot;testdob@gmail.com&quot;,&quot;emailAddress2&quot;:&quot;test31@gmail.com&quot;,&quot;dateOfBirth&quot;: &quot;1980-01-01&quot;,&quot;phoneNumbers&quot;:[{&quot;type&quot;:&quot;Home&quot;,&quot;number&quot;:&quot;1-555-555-5555&quot;}],&quot;addresses&quot;:[{&quot;type&quot;:&quot;home&quot;,&quot;street1&quot;:&quot;756 Sylan Way&quot;,&quot;city&quot;:&quot;Parsippany&quot;,&quot;state&quot;:&quot;NJ&quot;,&quot;country&quot;:&quot;US&quot;,&quot;postalCode&quot;:&quot;07950&quot;,&quot;_xFieldBitmask_&quot;:[0]}]},&quot;enroll&quot;:true}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">0ffdafb9-80d1-4486-93a4-8dcfd519a411.mock.pstmn.io</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/tpws/customer/add</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">1000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CreateItineraryAPI" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+    &quot;xRogType&quot;: 101,&#xd;
+    &quot;customerId&quot;: 506476232705,&#xd;
+   &quot;header&quot;: {&#xd;
+      &quot;origin&quot;: &quot;mgmgrandlv&quot;,&#xd;
+      &quot;credentials&quot;: {&#xd;
+        &quot;username&quot;: &quot;mgmgrandlv&quot;,&#xd;
+        &quot;password&quot;: &quot;doesntmatter&quot;,&#xd;
+        &quot;_xFieldBitmask_&quot;: [0]&#xd;
+      },&#xd;
+      &quot;senderVersion&quot;: {&#xd;
+        &quot;majorVersion&quot;: 3,&#xd;
+        &quot;minorVersion&quot;: 0,&#xd;
+        &quot;_xFieldBitmask_&quot;: [0]&#xd;
+      },&#xd;
+      &quot;_xFieldBitmask_&quot;: [0]&#xd;
+    },&#xd;
+    &quot;tripParams&quot;: {&#xd;
+        &quot;arrivalDate&quot;: &quot;2017-09-25&quot;,&#xd;
+        &quot;departureDate&quot;: &quot;2017-09-26&quot;,&#xd;
+        &quot;numAdults&quot;: 2,&#xd;
+        &quot;numChildren&quot;: 0,&#xd;
+        &quot;_xFieldBitmask_&quot;: [&#xd;
+            0&#xd;
+        ]&#xd;
+    },&#xd;
+    &quot;_xFieldBitmask_&quot;: [&#xd;
+        0&#xd;
+    ]&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">90cbe21f-2c07-4124-b948-1415a94fa8b3.mock.pstmn.io</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/tpws/customer/createItinerary</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">1000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="MakeRoomReservationAPI" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+    &quot;customerId&quot;: 838566281217,&#xd;
+    &quot;header&quot;: {&#xd;
+        &quot;origin&quot;: &quot;mgmgrandlv&quot;,&#xd;
+        &quot;credentials&quot;: {&#xd;
+            &quot;username&quot;: &quot;mgmgrandlv&quot;,&#xd;
+            &quot;password&quot;: &quot;doesntmatter&quot;&#xd;
+        },&#xd;
+        &quot;senderVersion&quot;: {&#xd;
+            &quot;majorVersion&quot;: 3,&#xd;
+            &quot;minorVersion&quot;: 0&#xd;
+        }&#xd;
+    },&#xd;
+    &quot;itineraryId&quot;: &quot;6223749633&quot;,&#xd;
+    &quot;reservation&quot;: {&#xd;
+        &quot;instance&quot;: 0,&#xd;
+        &quot;numRooms&quot;: 1,&#xd;
+        &quot;checkInDate&quot;: &quot;2019-06-13T00:00:00.000+0000&quot;,&#xd;
+        &quot;checkOutDate&quot;: &quot;2019-06-14T00:00:00.000+0000&quot;,&#xd;
+        &quot;numAdults&quot;: 2,&#xd;
+        &quot;numChildren&quot;: 0,&#xd;
+        &quot;postingStartedAt&quot;: 0,&#xd;
+        &quot;postingEndedAt&quot;: 0,&#xd;
+        &quot;amountDue&quot;: 0,&#xd;
+        &quot;createdAt&quot;: 0,&#xd;
+        &quot;updatedAt&quot;: 0,&#xd;
+        &quot;syncFromOperaAt&quot;: 0,&#xd;
+        &quot;pointCharges&quot;: 0,&#xd;
+        &quot;nrgStatus&quot;: false,&#xd;
+        &quot;customerRank&quot;: 0,&#xd;
+        &quot;customerSegment&quot;: 0,&#xd;
+        &quot;propertyId&quot;: &quot;66964e2b-2550-4476-84c3-1a4c0c5c067f&quot;,&#xd;
+        &quot;roomTypeId&quot;: &quot;87d61ebe-bc9e-4b9a-b480-5b049f91b8c1&quot;,&#xd;
+        &quot;guaranteeCode&quot;: &quot;CC&quot;,&#xd;
+        &quot;bookings&quot;: [&#xd;
+            {&#xd;
+                &quot;date&quot;: &quot;2019-06-13T00:00:00.000+0000&quot;,&#xd;
+                &quot;basePrice&quot;: 99999.99,&#xd;
+                &quot;customerPrice&quot;: 0,&#xd;
+                &quot;price&quot;: 99999.99,&#xd;
+                &quot;isComp&quot;: false,&#xd;
+                &quot;programIdIsRateTable&quot;: false,&#xd;
+                &quot;isCTA&quot;: false,&#xd;
+                &quot;points&quot;: 0,&#xd;
+                &quot;basePoints&quot;: 0,&#xd;
+                &quot;memberPrice&quot;: -1,&#xd;
+                &quot;memberBasePrice&quot;: -1,&#xd;
+                &quot;memberPoints&quot;: 0,&#xd;
+                &quot;memberBasePoints&quot;: 0,&#xd;
+                &quot;remainingInventory&quot;: 5,&#xd;
+                &quot;resortFeePrice&quot;: 37,&#xd;
+                &quot;propertyId&quot;: &quot;66964e2b-2550-4476-84c3-1a4c0c5c067f&quot;,&#xd;
+                &quot;roomType&quot;: &quot;fdbc7bd2-516d-4887-a49d-e77d03425484&quot;,&#xd;
+                &quot;programId&quot;: &quot;e4b41590-d244-42ed-830b-e0c75b2030e2&quot;,&#xd;
+                &quot;pricingRuleId&quot;: &quot;f44bd9e2-45e0-4480-ab15-2cb7a1af5df4&quot;&#xd;
+            }&#xd;
+        ],&#xd;
+        &quot;markets&quot;: [&#xd;
+            {&#xd;
+                &quot;date&quot;: &quot;2019-06-13T00:00:00.000+0000&quot;,&#xd;
+                &quot;marketCode&quot;: &quot;TFIT&quot;,&#xd;
+                &quot;sourceCode&quot;: &quot;TFITIC&quot;,&#xd;
+                &quot;_xFieldBitmask_&quot;: [&#xd;
+                    0&#xd;
+                ]&#xd;
+            }&#xd;
+        ],&#xd;
+        &quot;chargesAndTaxesCalc&quot;: {&#xd;
+            &quot;charges&quot;: [&#xd;
+                {&#xd;
+                    &quot;date&quot;: &quot;2019-06-13T00:00:00.000+0000&quot;,&#xd;
+                    &quot;amount&quot;: 240.2,&#xd;
+                    &quot;pointsUsed&quot;: 0,&#xd;
+                    &quot;itemized&quot;: [&#xd;
+                        {&#xd;
+                            &quot;itemType&quot;: &quot;RoomCharge&quot;,&#xd;
+                            &quot;amount&quot;: 203.2,&#xd;
+                            &quot;pointsUsed&quot;: 0,&#xd;
+                            &quot;item&quot;: &quot;Room Charge&quot;,&#xd;
+                            &quot;_xFieldBitmask_&quot;: [&#xd;
+                                0&#xd;
+                            ]&#xd;
+                        },&#xd;
+                        {&#xd;
+                            &quot;itemType&quot;: &quot;ExtraGuestCharge&quot;,&#xd;
+                            &quot;amount&quot;: 0,&#xd;
+                            &quot;pointsUsed&quot;: 0,&#xd;
+                            &quot;item&quot;: &quot;Extra Guest Charge&quot;,&#xd;
+                            &quot;_xFieldBitmask_&quot;: [&#xd;
+                                0&#xd;
+                            ]&#xd;
+                        },&#xd;
+                        {&#xd;
+                            &quot;itemType&quot;: &quot;ResortFee&quot;,&#xd;
+                            &quot;amount&quot;: 37,&#xd;
+                            &quot;pointsUsed&quot;: -1,&#xd;
+                            &quot;item&quot;: &quot;Resort Fee&quot;,&#xd;
+                            &quot;_xFieldBitmask_&quot;: [&#xd;
+                                0&#xd;
+                            ]&#xd;
+                        }&#xd;
+                    ],&#xd;
+                    &quot;_xFieldBitmask_&quot;: [&#xd;
+                        0&#xd;
+                    ]&#xd;
+                }&#xd;
+            ],&#xd;
+            &quot;taxesAndFees&quot;: [&#xd;
+                {&#xd;
+                    &quot;date&quot;: &quot;2019-06-13T00:00:00.000+0000&quot;,&#xd;
+                    &quot;amount&quot;: 32.13876,&#xd;
+                    &quot;pointsUsed&quot;: -1,&#xd;
+                    &quot;itemized&quot;: [&#xd;
+                        {&#xd;
+                            &quot;itemType&quot;: &quot;RoomChargeTax&quot;,&#xd;
+                            &quot;amount&quot;: 27.188159999999996,&#xd;
+                            &quot;pointsUsed&quot;: -1,&#xd;
+                            &quot;item&quot;: &quot;Room Tax&quot;,&#xd;
+                            &quot;_xFieldBitmask_&quot;: [&#xd;
+                                0&#xd;
+                            ]&#xd;
+                        },&#xd;
+                        {&#xd;
+                            &quot;itemType&quot;: &quot;ExtraGuestChargeTax&quot;,&#xd;
+                            &quot;amount&quot;: 0,&#xd;
+                            &quot;pointsUsed&quot;: -1,&#xd;
+                            &quot;item&quot;: &quot;Extra Guest Tax&quot;,&#xd;
+                            &quot;_xFieldBitmask_&quot;: [&#xd;
+                                0&#xd;
+                            ]&#xd;
+                        },&#xd;
+                        {&#xd;
+                            &quot;itemType&quot;: &quot;ResortFeeTax&quot;,&#xd;
+                            &quot;amount&quot;: 4.9506,&#xd;
+                            &quot;pointsUsed&quot;: -1,&#xd;
+                            &quot;item&quot;: &quot;Resort Fee Tax&quot;,&#xd;
+                            &quot;_xFieldBitmask_&quot;: [&#xd;
+                                0&#xd;
+                            ]&#xd;
+                        }&#xd;
+                    ],&#xd;
+                    &quot;_xFieldBitmask_&quot;: [&#xd;
+                        0&#xd;
+                    ]&#xd;
+                }&#xd;
+            ],&#xd;
+            &quot;_xFieldBitmask_&quot;: [&#xd;
+                0&#xd;
+            ]&#xd;
+        },&#xd;
+        &quot;depositPolicyCalc&quot;: {&#xd;
+            &quot;depositRequired&quot;: true,&#xd;
+            &quot;creditCardRequired&quot;: true,&#xd;
+            &quot;_xFieldBitmask_&quot;: [&#xd;
+                0&#xd;
+            ]&#xd;
+        },&#xd;
+        &quot;depositCalc&quot;: {&#xd;
+            &quot;dueDate&quot;: &quot;2019-06-12T22:01:45.567+0000&quot;,&#xd;
+            &quot;amountPolicy&quot;: &quot;Nights&quot;,&#xd;
+            &quot;amount&quot;: 230.38815999999997,&#xd;
+            &quot;forfeitDate&quot;: &quot;2019-06-09T07:00:00.000+0000&quot;,&#xd;
+            &quot;forfeitAmount&quot;: 230.38815999999997,&#xd;
+            &quot;overrideAmount&quot;: -1,&#xd;
+            &quot;depositRuleCode&quot;: &quot;1NT&quot;,&#xd;
+            &quot;cancellationRuleCode&quot;: &quot;72H&quot;,&#xd;
+            &quot;itemized&quot;: [&#xd;
+                {&#xd;
+                    &quot;itemType&quot;: &quot;RoomCharge&quot;,&#xd;
+                    &quot;amount&quot;: 203.2,&#xd;
+                    &quot;pointsUsed&quot;: 0,&#xd;
+                    &quot;item&quot;: &quot;Room Charge&quot;,&#xd;
+                    &quot;_xFieldBitmask_&quot;: [&#xd;
+                        0&#xd;
+                    ]&#xd;
+                },&#xd;
+                {&#xd;
+                    &quot;itemType&quot;: &quot;RoomChargeTax&quot;,&#xd;
+                    &quot;amount&quot;: 27.188159999999996,&#xd;
+                    &quot;pointsUsed&quot;: -1,&#xd;
+                    &quot;item&quot;: &quot;Room Tax&quot;,&#xd;
+                    &quot;_xFieldBitmask_&quot;: [&#xd;
+                        0&#xd;
+                    ]&#xd;
+                }&#xd;
+            ],&#xd;
+            &quot;pointAmount&quot;: {&#xd;
+                &quot;dollarValue&quot;: 230.38815999999997,&#xd;
+                &quot;pointValue&quot;: 0,&#xd;
+                &quot;_xFieldBitmask_&quot;: [&#xd;
+                    0&#xd;
+                ]&#xd;
+            },&#xd;
+            &quot;_xFieldBitmask_&quot;: [&#xd;
+                0&#xd;
+            ]&#xd;
+        },&#xd;
+        &quot;creditCardCharges&quot;: [&#xd;
+            {&#xd;
+                &quot;expiry&quot;: &quot;2019-06-01T07:00:00.000&quot;,&#xd;
+                &quot;amount&quot;: 0.0,&#xd;
+                &quot;holder&quot;: &quot;Saikat Haldar&quot;,&#xd;
+                &quot;number&quot;: &quot;iSgpPj69YtYvZLd4Tg0uUYoSHuqXa92ifN1p2QtQP3HitrNANyD598J/LAeGzrsEY3aGmjZo+ZGoxNQCKaUrUg==&quot;,&#xd;
+                &quot;cvv&quot;: &quot;121&quot;,&#xd;
+                &quot;type&quot;: &quot;Mastercard&quot;,&#xd;
+                &quot;holderProfile&quot;: {&#xd;
+                    &quot;firstName&quot;: &quot;Saikat&quot;,&#xd;
+                    &quot;lastName&quot;: &quot;Haldar&quot;,&#xd;
+                    &quot;address&quot;: {&#xd;
+                        &quot;type&quot;: &quot;Alternate&quot;,&#xd;
+                        &quot;preferred&quot;: false,&#xd;
+                        &quot;street1&quot;: &quot;4201 S Decatur Blvd, Apt 2060&quot;,&#xd;
+                        &quot;street2&quot;: &quot;Apt 2060&quot;,&#xd;
+                        &quot;city&quot;: &quot;Las Vegas&quot;,&#xd;
+                        &quot;state&quot;: &quot;NV&quot;,&#xd;
+                        &quot;country&quot;: &quot;US&quot;,&#xd;
+                        &quot;postalCode&quot;: &quot;89103&quot;,&#xd;
+                        &quot;_xFieldBitmask_&quot;: [&#xd;
+                            0&#xd;
+                        ]&#xd;
+                    },&#xd;
+                    &quot;_xFieldBitmask_&quot;: [&#xd;
+                        0&#xd;
+                    ]&#xd;
+                },&#xd;
+                &quot;_xFieldBitmask_&quot;: [&#xd;
+                    0&#xd;
+                ]&#xd;
+            }&#xd;
+        ],&#xd;
+        &quot;rrUpSell&quot;: &quot;&quot;,&#xd;
+        &quot;operaState&quot;: &quot;&quot;,&#xd;
+        &quot;confirmationNumber&quot;: &quot;&quot;,&#xd;
+        &quot;operaConfirmationNumber&quot;: &quot;&quot;,&#xd;
+        &quot;_xFieldBitmask_&quot;: [&#xd;
+            0,&#xd;
+            0&#xd;
+        ]&#xd;
+    },&#xd;
+    &quot;_xFieldBitmask_&quot;: [&#xd;
+        0&#xd;
+    ]&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">661f458b-2f03-4133-8c0d-c83cb4dc2d6a.mock.pstmn.io</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/tpws/room/makeReservation</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">1000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="PricingAndAvailabilityAPI" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">5134eed1-4cdb-4f8d-b5a1-850c8b15d0ce.mock.pstmn.io</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/tpws/room/pricingAndAvailability</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">1000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="UpdateRoomReservationAPI" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+        &quot;xRogType&quot;: 263,&#xd;
+        &quot;stage&quot;: &quot;Checkout&quot;,&#xd;
+        &quot;calcsOnly&quot;: false,&#xd;
+        &quot;header&quot;: {&#xd;
+      &quot;origin&quot;: &quot;mgmgrandlv&quot;,&#xd;
+      &quot;credentials&quot;: {&#xd;
+        &quot;username&quot;: &quot;mgmgrandlv&quot;,&#xd;
+        &quot;password&quot;: &quot;doesntmatter&quot;,&#xd;
+        &quot;_xFieldBitmask_&quot;: [0]&#xd;
+      },&#xd;
+      &quot;senderVersion&quot;: {&#xd;
+        &quot;majorVersion&quot;: 3,&#xd;
+        &quot;minorVersion&quot;: 0,&#xd;
+        &quot;_xFieldBitmask_&quot;: [0]&#xd;
+      },&#xd;
+      &quot;_xFieldBitmask_&quot;: [0]&#xd;
+    },&#xd;
+        &quot;reservation&quot;: {&#xd;
+            &quot;instance&quot;: 0,&#xd;
+            &quot;numRooms&quot;: 1,&#xd;
+            &quot;checkInDate&quot;: &quot;2019-06-13&quot;,&#xd;
+            &quot;checkOutDate&quot;: &quot;2019-06-15&quot;,&#xd;
+            &quot;numAdults&quot;: 2,&#xd;
+            &quot;numChildren&quot;: 0,&#xd;
+            &quot;postingStartedAt&quot;: 0,&#xd;
+            &quot;postingEndedAt&quot;: 0,&#xd;
+            &quot;amountDue&quot;: 0,&#xd;
+            &quot;createdAt&quot;: 0,&#xd;
+            &quot;updatedAt&quot;: 0,&#xd;
+            &quot;syncFromOperaAt&quot;: 0,&#xd;
+            &quot;propertyId&quot;: &quot;66964e2b-2550-4476-84c3-1a4c0c5c067f&quot;,&#xd;
+            &quot;roomTypeId&quot;: &quot;87d61ebe-bc9e-4b9a-b480-5b049f91b8c1&quot;,&#xd;
+            &quot;guaranteeCode&quot;: &quot;CC&quot;,&#xd;
+            &quot;bookings&quot;: [&#xd;
+                {&#xd;
+                    &quot;date&quot;: &quot;2019-06-13&quot;,&#xd;
+                    &quot;basePrice&quot;: 254,&#xd;
+                    &quot;customerPrice&quot;: 0,&#xd;
+                    &quot;price&quot;: 203.2,&#xd;
+                    &quot;programIdIsRateTable&quot;: false,&#xd;
+                    &quot;overridePrice&quot;: -1,&#xd;
+                    &quot;overrideProgramIdIsRateTable&quot;: false,&#xd;
+                    &quot;isComp&quot;: false,&#xd;
+                    &quot;resortFeeIsSpecified&quot;: false,&#xd;
+                    &quot;resortFee&quot;: 0,&#xd;
+                    &quot;pricingRuleId&quot;: &quot;f44bd9e2-45e0-4480-ab15-2cb7a1af5df4&quot;,&#xd;
+                    &quot;_xFieldBitmask_&quot;: [&#xd;
+                        0&#xd;
+                    ]&#xd;
+                }&#xd;
+            ],&#xd;
+            &quot;creditCardCharges&quot;: [&#xd;
+                {&#xd;
+                    &quot;expiry&quot;: &quot;2020-12-01&quot;,&#xd;
+                    &quot;amount&quot;: 0,&#xd;
+                    &quot;holder&quot;: &quot;Test Durgesh&quot;,&#xd;
+                    &quot;type&quot;: &quot;Mastercard&quot;,&#xd;
+                    &quot;_xFieldBitmask_&quot;: [&#xd;
+                        0&#xd;
+                    ]&#xd;
+                }&#xd;
+            ],&#xd;
+            &quot;rrUpSell&quot;: &quot;&quot;,&#xd;
+            &quot;operaState&quot;: &quot;&quot;,&#xd;
+            &quot;confirmationNumber&quot;: &quot;&quot;,&#xd;
+            &quot;operaConfirmationNumber&quot;: &quot;&quot;,&#xd;
+            &quot;_xFieldBitmask_&quot;: [&#xd;
+                0&#xd;
+            ]&#xd;
+        },&#xd;
+        &quot;_xFieldBitmask_&quot;: [&#xd;
+            0&#xd;
+        ]&#xd;
+    }&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">661f458b-2f03-4133-8c0d-c83cb4dc2d6a.mock.pstmn.io</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/tpws/room/makeReservation</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">1000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="SearchCustomerAPI" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">e9f1ef30-600c-415d-b07a-2d05ec1684e0.mock.pstmn.io</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/tpws/customer/search</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">1000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename">C:\Users\Vikram.Gopupillai\Documents\apache-jmeter-5.1.1\bin\templates\result.xml</stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <BackendListener guiclass="BackendListenerGui" testclass="BackendListener" testname="Backend Listener" enabled="true">
+          <elementProp name="arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="testName" elementType="Argument">
+                <stringProp name="Argument.name">testName</stringProp>
+                <stringProp name="Argument.value">MGM Aurora API</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="nodeName" elementType="Argument">
+                <stringProp name="Argument.name">nodeName</stringProp>
+                <stringProp name="Argument.value">Fastest-VM</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="influxDBHost" elementType="Argument">
+                <stringProp name="Argument.name">influxDBHost</stringProp>
+                <stringProp name="Argument.value">localhost</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="influxDBPort" elementType="Argument">
+                <stringProp name="Argument.name">influxDBPort</stringProp>
+                <stringProp name="Argument.value">8086</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="influxDBUser" elementType="Argument">
+                <stringProp name="Argument.name">influxDBUser</stringProp>
+                <stringProp name="Argument.value">root</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="influxDBPassword" elementType="Argument">
+                <stringProp name="Argument.name">influxDBPassword</stringProp>
+                <stringProp name="Argument.value">root</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="influxDBDatabase" elementType="Argument">
+                <stringProp name="Argument.name">influxDBDatabase</stringProp>
+                <stringProp name="Argument.value">jmeter</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="retentionPolicy" elementType="Argument">
+                <stringProp name="Argument.name">retentionPolicy</stringProp>
+                <stringProp name="Argument.value">autogen</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="samplersList" elementType="Argument">
+                <stringProp name="Argument.name">samplersList</stringProp>
+                <stringProp name="Argument.value">.*</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="useRegexForSamplerList" elementType="Argument">
+                <stringProp name="Argument.name">useRegexForSamplerList</stringProp>
+                <stringProp name="Argument.value">true</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="classname">rocks.nt.apm.jmeter.JMeterInfluxDBBackendListenerClient</stringProp>
+        </BackendListener>
+        <hashTree/>
+      </hashTree>
+      <ResultCollector guiclass="StatGraphVisualizer" testclass="ResultCollector" testname="Aggregate Graph" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>false</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>false</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>true</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <hostname>true</hostname>
+            <threadCounts>true</threadCounts>
+            <sampleCount>true</sampleCount>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
